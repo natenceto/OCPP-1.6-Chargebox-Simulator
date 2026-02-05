@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="styles.css">
+  <title>Charge Point Simulator</title>
+</head>
+
+<body>
+  <div class="wrapper">
+    <h1 class="title">Robotized EV Charging Experiment</h1>
+    <p class="subTitle">Charge Point Simulator with SoC Support</p>
+    <select style="display: none">
+      <option value="">OCPP-J1.6</option>
+    </select>
+    <div class="container">
+      <div class="actions">
+        <div class="indicatorWrapper">
+          <div class="indicator" id="red">DISCONNECTED</div>
+          <div class="indicator" id="green">CHARGING</div>
+          <div class="indicator" id="blue">CONNECTED</div>
+          <div class="indicator" id="yellow">____</div>
+        </div>
+        <div id="console">
+          <ul id="messages"></ul>
+        </div>
+        <label>Central Station</label><input id="CP" type="text" placeholder="Id Station"
+          value="ws://localhost:8000/ws/charging_stations/1" />
+        <label>Tag</label><input id="TAG" type="text" placeholder="Tag" value="000000010159376" />
+        <label>Connector uid</label>
+        <input id="CUID" type="text" placeholder="Connector uid" value="1" />
+        <label>Number of Connectors</label>
+        <input id="numberOfConnectors" type="number" min="1" max="32" value="1" />
+        <label>MeterValues Sample Interval (s)</label>
+        <input id="meterValuesSampleInterval" type="number" min="0" value="1" />
+        
+        <!-- SoC Controls -->
+        <label>Enable SoC in MeterValues</label>
+        <select id="enableSoC">
+          <option value="true">Yes - Send SoC data</option>
+          <option value="false">No - No SoC data</option>
+        </select>
+        <label>Starting SoC (%)</label>
+        <input id="startingSoC" type="number" min="0" max="100" value="25" />
+        <label>SoC Increment per MeterValue (%)</label>
+        <input id="socIncrement" type="number" min="0" max="10" step="0.1" value="0.5" />
+        
+        <!-- DataTransfer Controls -->
+        <label>Vendor ID</label>
+        <select id="vendorId">
+          <option value="">No Vendor DataTransfer</option>
+          <option value="ABB">ABB</option>
+          <option value="Alpitronic">Alpitronic</option>
+          <option value="Siemens">Siemens</option>
+          <option value="EVBox">EVBox</option>
+          <option value="Generic">Generic</option>
+        </select>
+
+        <label>Send SoC via DataTransfer</label>
+        <select id="enableDataTransfer">
+          <option value="true">Yes - Send DataTransfer</option>
+          <option value="false">No - Only MeterValues</option>
+        </select>
+        
+        <h2>Actions</h2>
+        <button id="connect">Connect</button>
+        <button id="send">Authorize</button>
+        <button id="start">Start Transaction</button>
+        <button id="stop">Stop Transaction</button>
+        <button id="heartbeat">Heartbeat</button>
+        <label>Meter value</label>
+        <input id="metervalue" type="text" placeholder="Meter value" value="1" />
+
+        <label>transactionId</label>
+        <input id="transactionId" type="text" placeholder="transactionId" value="1" />
+        <label>Connector Status</label>
+
+        <select name="ConnectorStatus" id="ConnectorStatus">
+          <option value="Available">Available</option>
+          <option value="Preparing">Preparing</option>
+          <option value="Charging">Charging</option>
+          <option value="SuspendedEV">SuspendedEV</option>
+          <option value="SuspendedEVSE">SuspendedEVSE</option>
+          <option value="Finishing">Finishing</option>
+          <option value="Reserved">Reserved</option>
+          <option value="Faulted">Faulted</option>
+          <option value="Offline">Offline</option>
+        </select>
+        
+        <h3>MeterValues</h3>
+        <button id="mv">Send Meter Values</button>
+        <div class="metervalues">
+          <p class="meterTexts">Increment value</p>
+          <p class="meterTexts">Time interval</p>
+          <p class="meterTexts">Counter</p>
+        </div>
+        <div class="metervalues">
+          <input id="meterIncrement" type="text" placeholder="meterIncrement" value="1" />
+          <input id="meterInterval" type="text" placeholder="meterInterval" value="1000" />
+          <input id="meterSendTimes" type="text" placeholder="meterSendTimes" value="60" />
+        </div>
+        <button id="mvp">Send Meter Values loop</button>
+        
+        <h3>DataTransfer</h3>
+        <button id="send_data_transfer">Send DataTransfer SoC</button>
+        <button id="data_transfer_loop">Send DataTransfer Loop</button>
+        
+        <h3>Other</h3>
+        <button id="status">Status Notification</button>
+        <button id="data_transfer">Data Tranfer</button>
+      </div>
+
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+  <script src="script.js" type="text/javascript"></script>
+</body>
+
+</html>

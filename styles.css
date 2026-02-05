@@ -1,0 +1,177 @@
+html,
+body {
+  margin: 0;
+}
+
+body {
+  background: #ddd;
+  color: 333;
+  font-family: Arial;
+  /* height: 100vh !important; */
+}
+
+button,
+input,
+select {
+  width: 100%;
+  margin-bottom: 5px;
+  cursor: pointer;
+  height: 2rem;
+}
+
+button {
+  background: #369;
+  color: #fff;
+  padding: 5px 0;
+  border: none;
+  height: 2rem;
+}
+
+button:hover {
+  background: #258;
+}
+
+h2 {
+  color: #333;
+  border-bottom: 2px solid #369;
+  padding-bottom: 5px;
+  margin-top: 20px;
+}
+
+h3 {
+  color: #555;
+  border-bottom: 1px solid #999;
+  padding-bottom: 3px;
+  margin-top: 15px;
+  font-size: 1.1em;
+}
+
+ul {
+  color: #ddd;
+}
+
+#red,
+#green,
+#blue {
+  min-width: 10px;
+}
+
+#red {
+  background-color: firebrick;
+  color: aliceblue;
+}
+
+#green {
+  background-color: forestgreen;
+  color: aliceblue;
+  animation: changeBackgroundColor ease;
+  animation-iteration-count: infinite;
+  animation-duration: 4s;
+  animation-fill-mode: both;
+}
+
+#blue {
+  background-color: cornflowerblue;
+  color: aliceblue;
+}
+
+#yellow {
+  background-color: yellow;
+}
+
+.title {
+  color: #27a3ac;
+  text-align: center;
+  animation: changeColor ease;
+  animation-iteration-count: infinite;
+  animation-duration: 4s;
+  animation-fill-mode: both;
+  font-size: 48px;
+  padding: 0;
+  margin: 0;
+}
+
+.subTitle {
+  text-align: center;
+  font-size: large;
+}
+
+@keyframes changeColor {
+  0% {
+    color: rgb(146, 213, 142);
+  }
+
+  50% {
+    color: rgb(133, 184, 222);
+  }
+
+  100% {
+    color: rgb(146, 213, 142);
+  }
+}
+
+@keyframes changeBackgroundColor {
+  0% {
+    background-color: rgb(146, 213, 142);
+  }
+
+  50% {
+    background-color: rgb(133, 184, 222);
+  }
+
+  100% {
+    background-color: rgb(146, 213, 142);
+  }
+}
+
+.metervalues {
+  display: flex;
+  text-align: center;
+}
+
+.container {
+  margin: 0 auto;
+  display: flex;
+  max-height: 100%;
+  max-width: 75%;
+}
+
+#console {
+  flex-grow: 1;
+  flex-basis: 0;
+  overflow: scroll;
+  max-height: 200px;
+  height: 200px;
+  background-color: #333;
+}
+
+.actions {
+  flex-grow: 1;
+  flex-basis: 0;
+}
+
+.wrapper {
+  max-height: 100%;
+}
+
+.meterTexts {
+  flex-grow: 1;
+  flex-basis: 0;
+  text-align: left;
+}
+
+.indicatorWrapper {
+  margin: 20px auto;
+}
+
+.indicator {
+  width: 300px;
+  word-spacing: 50px;
+  font-size: 20px;
+  letter-spacing: 5px;
+  text-align: center;
+  vertical-align: middle;
+  margin: auto;
+  padding: 10px;
+  border-radius: 10px;
+}
